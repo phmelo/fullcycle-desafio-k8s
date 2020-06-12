@@ -129,15 +129,23 @@ Veja que o banco foi criado corretamente, e depois digite "QUIT" e depois "EXIT"
       1. kubectl apply -f ./go-server/deployment.yaml
       2. kubectl apply -f ./go-server/service.yaml
 
-4. Para criar o processo de CI com o Github e o GCB, crie o arquivo "cloudbuild.yaml"
+4. Para criar o processo de CI com o Github e o GCB:
 
-   1. Execute o install com a imagem Go
-   2. Execute o teste unitário
-   3. Suba o arquivo para o Github
-   4. Dentro do GCB, crie a trigger para pull requests
-   5. Criar um pull request e gerar commit para ativra a trigger.
+   1. Criar o arquivo "cloudbuild.yaml" e informar os comandos para:
+      1. Executar o install com a imagem Go
+      2. Executar o teste unitário
+   2. Suba todos os arquivos para o Github
+   3. Acesse o Google Cloud Plataform
+      1. Dentro do Google Cloud Build
+         1. Connecte ao repositório do github, criado na etapa anterior.
+         2. Crie uma trigger para ser ativada por pull request e escolha o arquivo "cloudbuild.yaml"
+   4. Criar um pull request e gerar commit para ativra a trigger.
 
    
 
 
+
+Imagem do webserver Go criada no docker hub
+
+https://hub.docker.com/repository/docker/phmelomorais/code-education-go-webserver
 
