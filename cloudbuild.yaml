@@ -1,0 +1,11 @@
+steps:
+  - id: 'Executando go install'
+    name: 'gcr.io/cloud-builders/go'
+    args: ['install', '-v','./...']
+    env: ['PROJECT_ROOT=go-server']
+
+  - id: 'Executando go unit test'
+    name: 'gcr.io/cloud-builders/go'
+    args: ['test', '-v', './...']
+    env: ['PROJECT_ROOT=go-server']
+

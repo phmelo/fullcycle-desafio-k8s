@@ -1,0 +1,36 @@
+apiVersion: apps/v1
+kind: Deployment
+metadata:
+  name: nginx-deplo
+spec:
+  replicas: 3
+  selector:
+    matchLabels:
+      app: nginx-server
+  template:
+    metadata:
+      labels:
+        app: nginx-server
+    spec:
+      containers:
+      - name: nginx-server
+        image: nginx:1.17-alpine
+        resources:
+          limits:
+            memory: 128Mi
+          requests:
+            memory: 32Mi
+        ports:
+        - containerPort: 80
+        volumeMounts:
+        - mountPath: /usr/share/nginx/html
+          name: nginx-conf
+          readOnly: true
+    
+      volumes:
+      - name: nginx-conf
+        configMap:
+          name: nginx-conf
+          items: 
+          - key: index.html.data
+            path: index.html
